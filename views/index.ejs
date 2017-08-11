@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/admindashboard_assets/css/CustomStyles.css">
+ <script src="/admindashboard_assets/js/bootstrap.js"></script>
+<style>
+.embed-container { position: relative; padding-bottom: 56.25%; height: 500px; overflow: hidden; max-width: 100%; } 
+.embed-container iframe, 
+.embed-container object, 
+.embed-container 
+embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+ul.scroll {
+    
+    width: 100%;
+    height: 150px;
+    overflow: scroll;
+}
+</style>
+
+</head>
+
+
+
+<body>
+<script>
+var d = new Date();
+var n = d.getHours();
+refreshAt(n,6,00);
+
+
+</script>
+
+
+
+<h2 align=center >Canvas Admin Dashboard</h2>
+
+<div class="container-fluid">
+  
+  
+  <div class="row">
+
+    <div class="col-md-3  col-sm-12"><div class="panel panel-default">
+  <div class="panel-heading">Canvas Status</div>
+    
+  <div class="panel-body">
+<div class='embed-container'>
+<embed src='https://status.instructure.com/' style='border:0'></embed >
+</div>
+</div></div>
+    </div>
+    <div class="col-md-6 col-sm-12" ><div class="panel panel-default">
+  <div class="panel-heading">SIS Import Status</div>
+  <div class="panel-body">
+  
+  <table align="center">
+  <tr>
+ <th></th>
+    <th align='center'>Start Date</th>
+    <th>End Date</th>
+    <th>State</th>
+    
+  </tr>
+  <tr>
+    <th>Enrollments</th>
+
+    
+    <td><%=time.timeenrollment%></td>
+    <td><%=time.endenrollment%></td>
+    <td id="myBtn">
+ <%if(fail===true){%>
+  
+    <a  ><img onclick="error()" src="/admindashboard_assets/img/emergency.png" title="Error" width="24" height="24"></a>
+
+ <% } else if(enrollmentsname.length>0){%>
+  
+    <a  ><img    src="/admindashboard_assets/img/warning.png" title="Warning" width="24" height="24"></a>
+ <%} else if(time.endenrollment=='__'){%>
+  
+    <a  >__</a>
+ <%} else if(enrollmentsname.length===0){%>
+    <a ><img src="/admindashboard_assets/img/ok.png" title="Ok" width="24" height="24"></a>
+    <%}%>
+    </td>
+    
+  </tr>
+  <tr>
+    <th>Courses</th>
+ <td><%=time.timecourse%></td>
+    <td><%=time.endcourse%></td>
+    <td id="myBtn1">
+    
+    
+    
+    
+    <%if(fail===true){%>
+  
+    <a  ><img onclick="error()" src="/admindashboard_assets/img/emergency.png" title="Error" width="24" height="24"></a>
+
+ <% } else if(courses.length>0){%>
+  
+    <a  ><img    src="/admindashboard_assets/img/warning.png" title="Warning" width="24" height="24"></a>
+ <%} else if(time.timecourse=='__'){%>
+  
+    <a  >__</a>
+ <%}  
+ else if(courses.length===0){%>
+    <a ><img src="/admindashboard_assets/img/ok.png" title="Ok" width="24" height="24"></a>
+    <%}%>
+    
+    
+  </td>
+ 
+  </tr>
+  <tr>
+    <th>Sections</th>
+    <td><%=time.timesection%></td>
+    <td><%=time.endsection%></td>
+   <td id="myBtn2">
+   
+   
+   
+    
+    <%if(fail===true){%>
+  
+    <a  ><img onclick="error()" src="/admindashboard_assets/img/emergency.png" title="Error" width="24" height="24"></a>
+
+ <% } else if(section.length>0){%>
+  
+    <a  ><img    src="/admindashboard_assets/img/warning.png" title="Warning" width="24" height="24"></a>
+ <%} else if(time.timesection=='__'){%>
+  
+    <a  >__</a>
+ <%}    
+  else if(section.length===0){%>
+    <a ><img src="/admindashboard_assets/img/ok.png" title="Ok" width="24" height="24"></a>
+    <%}%>
+    
+   
+   
+   
+   
+  </td>
+ 
+   
+  </tr>
+  <tr>
+    <th>Users</th>
+    <td><%=time.timeuser%></td>
+    <td><%=time.enduser%></td>
+    <td id="myBtn3"> 
+    
+    
+    
+    
+    <%if(fail===true){%>
+  
+    <a  ><img onclick="error()" src="/admindashboard_assets/img/emergency.png" title="Error" width="24" height="24"></a>
+
+ <% } else if(users.length>0){%>
+  
+    <a  ><img    src="/admindashboard_assets/img/warning.png" title="Warning" width="24" height="24"></a>
+ <%}
+ 
+ else if(time.timeuser=='__'){%>
+  
+    <a  >__</a>
+ <%}   else if(users.length===0){%>
+    <a ><img src="/admindashboard_assets/img/ok.png" title="Ok" width="24" height="24"></a>
+    <%}%>
+    
+    
+    </td>
+    
+  </tr>
+ 
+<tr>
+<%if(file!=''){%>
+<th><%=file%></th>
+<td><%=startdate%></td>
+    <td><%=enddate%></td>
+   <td id="myBtn4"> <%if(filewarning.length>0){%>
+     <a  ><img    src="/admindashboard_assets/img/warning.png" title="Warning" width="24" height="24"></a>
+   <%}
+   else if(filewarning.length==0){%>
+   <a ><img src="/admindashboard_assets/img/ok.png" title="Ok" width="24" height="24"></a></td> <%}%>   
+
+<%}%>
+</tr>
+
+
+
+</table>   
+
+<a href="/admindashboard_assets/SIS_ImportLogs.xlsx" download>Download</a>
+   
+           </div>
+
+        
+    </div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="span" class="close">&times;</span>
+    <div data-role="header">
+        <h3 align="center" id="modelhead"></h3>
+      </div>
+    <ul class="scroll" ><div id='para'><div></ul>
+    <a align="Cenrter" onclick="buttonfunction()" class="button style2">close</a>
+  </div>
+
+</div>
+
+   <div class="panel panel-default">
+     <div class="panel-heading">Statistics</div>
+     <div class="panel-body">
+       <table align="center">
+  <tr>
+ <th></th>
+    <th>Total Records</th>
+    <th>Warning Count</th>
+  </tr>
+ <tr>
+ <th>Enrollments</th>
+    <td align="center"><%=recordCount.countenrollments%></th>
+    <td><%=enrollmentsname.length%></th>
+  </tr>
+
+<tr>
+ <th>Courses</th>
+    <td><%=recordCount.countcourses%></th>
+    <td><%=courses.length%></th>
+  </tr>
+
+<tr>
+ <th>Sections</th>
+    <td><%=recordCount.countsection%></th>
+    <td><%=section.length%></th>
+  </tr>
+
+
+
+<tr>
+ <th>Users</th>
+    <td><%=recordCount.countusers%></th>
+    <td><%=users.length%></th>
+  </tr>
+
+</table>
+       
+       </div>   
+  </div>
+
+
+  </div>
+    <div class="col-md-3 col-sm-12" ><div class="panel panel-default">
+  <div class="panel-heading">Canvas Calendar</div>
+  <div class="panel-body">
+<div class='embed-container'><embed src='https://calendar.google.com/calendar/embed?showPrint=0&showCalendars=0&mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=instructure.com_u3bufsip887n3qb6fht3rgnbts@group.calendar.google.com&color=%23125A12&ctz=America/Denver&pli=1' width='fill' height=500 align='center'/>  
+</div>  
+  </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var btn = document.getElementById("myBtn");
+var btn1 = document.getElementById("myBtn1");
+var btn2 = document.getElementById("myBtn2");
+var btn3 = document.getElementById("myBtn3");
+var btn4=document.getElementById("myBtn4");
+
+btn.onclick= function() {
+var string1='';
+var warning='';
+
+warning=<%-JSON.stringify(enrollmentsname)%>
+if(warning.length>0){
+  string1="Warning in Enrollments"
+myfunction(warning,string1);}
+}
+
+btn1.onclick= function() {
+var warning='';
+warning=<%-JSON.stringify(courses)%>
+if(warning.length>0){
+  string1="Warning in Courses";
+myfunction(warning,string1);}
+}
+
+
+
+btn2.onclick= function() {
+var warning='';
+warning=<%-JSON.stringify(section)%>
+if(warning.length>0){
+  string1="Warning in Sections";
+myfunction(warning,string1);
+}
+}
+
+btn3.onclick= function() {
+var warning='';
+warning=<%-JSON.stringify(users)%>
+if(warning.length>0){
+  string1="Warning in Users";
+  myfunction(warning,string1);
+}}
+
+btn4.onclick= function() {
+var warning='';
+warning=<%-JSON.stringify(filewarning)%>
+if(warning.length>0){
+ string1=<%-JSON.stringify(file)%>
+myfunction(warning,string1);
+}}
+
+function error(){
+warning=<%-JSON.stringify(errors)%>
+
+string1="ERROR"
+myfunction(warning,string1);
+}
+
+</script>
+
+
+</body>
+</html>

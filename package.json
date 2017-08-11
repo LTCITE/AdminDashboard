@@ -1,0 +1,38 @@
+{
+  "name": "SIS_Imports",
+  "version": "0.0.1",
+  "description": "Canvas Admin Dashboard",
+  "main": "app.js",
+  "dependencies": {
+    "async": "^2.1.4",
+    "body-parser": "latest",
+    "ejs": "latest",
+    "express": "latest",
+    "express-session": "^1.15.1",
+    "mailgun-js":"latest",
+    "exceljs":"latest",
+    "request": "^2.79.0",
+     "moment-timezone":"latest",
+     "node-localstorage":"latest"
+  },
+  "author": "CITE",
+  "homepage": "http://nwmissouri.edu",
+  "repository": {
+    "type": "svn",
+    "url": "https://cite1.nwmissouri.edu:8443/svn/PhotoRoster_LTI/"
+  },
+  "license": "Apache-2.0",
+  "publisher": "nodepad++",
+  "engines": {
+    "node": "latest"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "should": "^11.1.1",
+    "supertest": "^2.0.1"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec ./test/controllers/*.js ./test/models/*.js"
+  }
+}
