@@ -37,7 +37,7 @@ An Excel sheet can be downloaded from the page which contains logs and summary o
 
 ## Usage
 #### Initialization
-[Demo video] [7]
+Demo video [Canvas Admin Dashboard][7]
 #### Maintenance
 - You need to backup the excel sheet every month which contains logs and summary of SIS imports.
 
