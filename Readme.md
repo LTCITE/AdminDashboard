@@ -37,7 +37,7 @@ An Excel sheet can be downloaded from the page which contains logs and summary o
 
 ## Usage
 #### Initialization
-Demo video (coming soon)
+Demo video [7]
 #### Maintenance
 - You need to backup the excel sheet every month which contains logs and summary of SIS imports.
 
@@ -56,3 +56,4 @@ Phone: (660) 562-1532
 [4]: https://community.canvaslms.com/docs/DOC-10864-4214441833
 [5]: https://community.canvaslms.com/docs/DOC-10806-4214724194
 [6]: https://community.canvaslms.com/docs/DOC-10756-421474559
+[7]: https://youtu.be/h-01gYxlcE8
